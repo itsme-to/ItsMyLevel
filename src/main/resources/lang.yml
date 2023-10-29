@@ -1,0 +1,43 @@
+messages:
+    prefix: "<gradient:#ef709b:#fa9372><bold>LEVEL</bold></gradient> <white>┃ "
+    no-permission: "You don't have permission to do this!"
+    not-player: "This command must be run by a player"
+    invalid-command: "Unknown subcommand!"
+    reloaded: "Reloaded!"
+    requires-player: "You must specify a player!"
+    invalid-player: "Invalid player!"
+    requires-level: "You must specify a meta"
+    invalid-level: "Invalid meta!"
+    requires-value: "You must specify an value"
+    invalid-value: "Invalid value!"
+    enabled-xp-gain-sound: "You have &aenabled &fXP gain sounds!"
+    disabled-xp-gain-sound: "You have &cdisabled &fXP gain sounds!"
+    exp-given: "Successfully gave &e%amount%xp &fof &e%level% &fto &e%playername%&r!"
+    level-reset: "Successfully reset level &e%level% &rfor player &e%player%&r!"
+    levels-reset: "Successfully reset all levels for player &e%player%&r!"   
+
+help:
+    - ""
+    - "<gradient:#ef709b:#fa9372><bold>META</bold></gradient> <white>┃ List of commands"
+    - ""
+    - "<yellow>/meta set <player> <meta> <value></yellow> <gray>-</gray> Set the meta value for a player"
+    - "<yellow>/meta give <player> <meta> <value></yellow> <gray>-</gray> Increase the value of a meta for a player"
+    - "<yellow>/meta take <player> <meta> <value></yellow> <gray>-</gray> Reduce the value of a meta for a player"
+    - "<yellow>/meta reset <player> <meta></yellow> <gray>-</gray> Reset the value of a meta for a player"
+    - "<yellow>/meta info <player> <meta></yellow> <gray>-</gray> Get meta value for a player"
+    - "<yellow>/meta currency</yellow> <gray>-</gray> Currency based commands"
+    - "<yellow>/meta list</yellow> <gray>-</gray> <white>Get meta list"
+    - "<yellow>/meta reload</yellow> <gray>-</gray> <white>Reload ItsMyMeta"
+
+stats:
+    - "<white>%name% <gradient:#ef709b:#fa9372><bold>Info for</bold></gradient>
+        <gradient:#ef709b:#fa9372><bold>%player%</bold></gradient>"
+    - ""
+    - "<yellow>Level: </yellow> <white>%level%"
+    - "<yellow>Progress: </yellow> <white>%current%%<white><gray>/</gray><white>100%"
+
+empty:
+    name: "None"
+    value: "?"
+
+infinity: "∞"

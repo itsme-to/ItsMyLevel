@@ -1,0 +1,283 @@
+# The ID of the level is the name of the .yml file,
+# for example skyblock.yml has the ID of skyblock
+# You can place level anywhere in this folder,
+# including in subfolders if you want to organize your level configs
+# _example.yml is not loaded.
+
+# The name and description, shown to players.
+name: Island
+
+# Team/Party mode for this level
+team: player
+
+commands:
+    - is level
+    - island level
+    - islandlevel
+
+    # Options for the GUI
+gui:
+    rows: 6
+
+    mask:
+        # The way the mask works is by having a list of materials
+        # And then a pattern to use those materials.
+
+        # The pattern is the rows in the GUI
+        # Each line must be 9 long, and the amount of rows should be the amount of rows in the GUI
+        # A zero represents nothing
+        # A 1 represents the first material
+        # A 2 represents the second material
+        # And so on, you can add up to 9.
+
+        materials:
+            - black_stained_glass_pane
+        pattern:
+            - "111111111"
+            - "111111111"
+            - "111111111"
+            - "111111111"
+            - "111111111"
+            - "111111111"
+
+    progression-slots:
+        # To set the order of the pattern,
+        # Use 1-9 and then a-z: a goes after 9.
+        enabled: true
+
+        pattern:
+            - "109ab0jkl"
+            - "2080c0i0m"
+            - "3070d0h0n"
+            - "4560efg0o"
+            - "00000000p"
+            - "00000000q"
+
+        # The amount of the item as a function of the level
+        item-amount: "%level%"
+        # For example, increasing every 10 levels would be "ceil((%level% + 1) / 10)"
+        # The value is always rounded down.
+
+        prev-page:
+            material: arrow
+            name: "&fPrevious Page"
+            location:
+                row: 6
+                column: 4
+
+        next-page:
+            material: arrow
+            name: "&fNext Page"
+            location:
+                row: 6
+                column: 6
+
+        unlocked:
+            item: lime_stained_glass_pane
+            name: "&a%name% %level_numeral%"
+            lore:
+                - "&f"
+                - "&fRewards:"
+                - "%rewards%"
+                - "&f"
+                - "&aUNLOCKED"
+        in-progress:
+            item: yellow_stained_glass_pane
+            name: "&e%name% %level_numeral%"
+            lore:
+                - "&f"
+                - "&fRewards:"
+                - "%rewards%"
+                - "&f"
+                - "&fProgress:"
+                - "&8» &e%percentage_progress%%"
+                - "&8» &e%current_xp%&8/&7%required_xp% &fXP"
+        locked:
+            item: red_stained_glass_pane
+            name: "&c%name% %level_numeral%"
+            lore:
+                - "&f"
+                - "&fRewards:"
+                - "%rewards%"
+
+    # Custom GUI slots; see here for a how-to: https://plugins.auxilor.io/all-plugins/custom-gui-slots
+    custom-slots: [ ]
+
+
+    # There are two ways to specify level XP requirements:
+#  1. A formula to calculate for infinite levels
+#  2. A list of XP requirements for each level
+
+# Formula
+# xp-formula: (2 ^ %level%) * 25
+# max-level: 100 # (Optional) The max level, if not specified, there is no max level
+
+# List
+xp-requirements:
+    - 50
+    - 125
+    - 200
+    - 300
+    - 500
+    - 750
+    - 1000
+    - 1500
+    - 2000
+    - 3500
+    - 5000
+    - 7500
+    - 10000
+    - 15000
+    - 20000
+    - 30000
+    - 50000
+    - 75000
+    - 100000
+    - 200000
+    - 300000
+    - 400000
+    - 500000
+    - 600000
+    - 700000
+    - 800000
+    - 900000
+    - 1000000
+    - 1100000
+    - 1200000
+    - 1300000
+    - 1400000
+    - 1500000
+    - 1600000
+    - 1700000
+    - 1800000
+    - 1900000
+    - 2000000
+    - 2100000
+    - 2200000
+    - 2300000
+    - 2400000
+    - 2500000
+    - 2600000
+    - 2750000
+    - 2900000
+    - 3100000
+    - 3400000
+    - 3700000
+    - 4000000
+    - 5000000
+
+
+level-colors:
+    default: "&f"
+    colors:
+        - level: 10
+          color: "&e"
+        - level: 20
+          color: "&a"
+        - level: 30
+          color: "&b"
+        - level: 40
+          color: "&2"
+
+# Custom placeholders to be used in descriptions,
+# Don't add % to the IDs, this is done automatically
+# The value takes a %level% placeholder and is a mathematical expression
+placeholders:
+    money: "%level% * 0.4"
+    blocks: "ceil(10 - %level% / 10)"
+
+    # Ways to tell the player about level xp gain
+gain-xp:
+    action-bar:
+        # If the action bar should be used
+        enabled: true
+        # The actionbar message that should be sent
+        message: "&f%name% &8| &9(%current_xp%/%required_xp%) &e+%gained_xp%"
+    boss-bar:
+        # If the boss bar should be used
+        enabled: false
+        # The boss bar message that should be sent
+        message: "&f%name% &8| &9(%current_xp%/%required_xp%)"
+        # The color of the boss bar (from https://hub.spigotmc.org/javadocs/spigot/org/bukkit/boss/BarColor.html)
+        color: blue
+        # The style of the boss bar (from https://hub.spigotmc.org/javadocs/spigot/org/bukkit/boss/BarStyle.html)
+        style: solid
+        # How long the boss bar should last (in milliseconds)
+        duration: 2500
+    sound:
+        # If a sound should be played
+        enabled: true
+        # The sound that should be played
+        sound: entity_experience_orb_pickup
+        # Pitch between 0.5 and 2
+        pitch: 2
+        # The volume
+        volume: 0.1
+
+    # An XP Gain method takes a trigger, a multiplier, conditions, and filters.
+    # The multiplier takes the value produced by the trigger and multiplies it
+    # by some value to calculate the experience that should be given
+    methods:
+        - trigger: mine_block
+          multiplier: 0.5
+          filters:
+              blocks:
+                  - netherrack
+
+        - trigger: mine_block
+          multiplier: 1
+          filters:
+              blocks:
+                  - stone
+                  - diorite
+                  - granite
+                  - andesite
+                  - cobblestone
+
+level-up:
+    # The rewards given on level up
+    # You specify a reward (either a stat or an effect),
+    # the number of levels to give it, and optionally
+    # a start and end level, which are inclusive.
+
+    # The chat messages to send on level up,
+    # and the lore that will be shown with %rewards% in the GUI
+
+    # An example reward config:
+    # - levels: 1
+    #   start-level: 10
+    #   end-level: 20
+    #   effects:
+    #     - id: give_money
+    #       args:
+    #         amount: 1000 * %level%
+
+    rewards:
+        - start-level: 10
+          end-level: 20
+          mutual: true
+          effects:
+              - id: give_money
+                args:
+                    amount: 1000 * %level%
+          message:
+              - "Example level 10-20"
+              - "Example level 10-20"
+    message:
+        enabled: true
+        message:
+            - "&f"
+            - " &#ff00aeYou levelled up &d%name%&#ff00ae to &eLevel %level_numeral%&#ff00ae!"
+            - "&f"
+            - " &#ff00ae&lREWARDS:"
+            - "%rewards%"
+            - "&f"
+    sound:
+        # If a sound should be played
+        enabled: true
+        # The sound that should be played
+        sound: entity_player_levelup
+        # Pitch between 0.5 and 2
+        pitch: 0.8
+        # The volume
+        volume: 1.0

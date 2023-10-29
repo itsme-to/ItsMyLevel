@@ -1,0 +1,17 @@
+name: ${pluginName}
+version: ${version}
+main: ru.oftendev.itsmylevel.ItsMyLevel
+author: _OfTeN_
+api-version: 1.17
+depend:
+    - eco
+softdepend:
+    - SuperiorSkyblock2
+    - PlaceholderAPI
+    - BentoBox
+    - FactionsUUID
+    - HuskTowns
+    - ItsMyAchievement
+commands:
+    itsmylevel:
+        aliases: [ levels, iml ]
